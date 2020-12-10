@@ -8,7 +8,6 @@ import control.UpCommand;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
-import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -43,9 +42,10 @@ public class Main extends JFrame {
     private void execute() {
         this.block = new Block(4,4);
         this.blockDisplay.display(block);
-        this.block.register(observer);
+        this.block.register(blockDisplay);
         this.commands = CreateCommands();
         this.setVisible(true);
+        
     }
 
     private JPanel blockPanel() {
@@ -55,7 +55,7 @@ public class Main extends JFrame {
     }
 
     private HashMap<String, Command> CreateCommands() {
-        HashMap<String, Command> commands = new HashMap<>();
+        HashMap<String, Command> commands = new HashMap<String,Command>();
         commands.put("L", new LeftCommand(block));
         commands.put("R", new RightCommand(block));
         commands.put("D", new DownCommand(block));
