@@ -1,13 +1,13 @@
 package model;
 
-import java.awt.List;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.TimerTask;
-import javax.swing.Timer;
+import java.util.Timer;
 
 
 public class Block {
-    public static final int MAX = 4;
+    public static final int MAX = 7;
     private int x;
     private int y;
     private final List<Observer> observers = new ArrayList<>();
@@ -47,7 +47,7 @@ public class Block {
     
     public void up(){
         if (y == MAX) return;
-        y--;
+        y++;
         changed();
     }
 
@@ -64,10 +64,10 @@ public class Block {
             @Override
             public void run(){
                 double r = Math.random();
-                if(r > 0.4) return;
-                if( r > 0.3) up();
-                if( r > 0.2) down();
-                if( r > 0.1) left();
+                if( r > 0.2) return;
+                if( r > 0.15) up();
+                if( r > 0.10) down();
+                if( r > 0.05) left();
                 else right();
             }
         };
